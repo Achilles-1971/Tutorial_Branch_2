@@ -59,4 +59,10 @@ class Bookinstance(models.Model):
 
   def __str__(self):
     return '%s %s %s' % (self.inv_nom, self.book, self.status)
-
+    
+class AuthorAdmin(admin.ModelAdmin): 
+    pass
+class BookAdrnin(admin.ModelAdmin):
+    pass
+class BookinstanceAdmin(admin.ModelAdmin): 
+    pass
