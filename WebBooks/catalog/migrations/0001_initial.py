@@ -36,7 +36,7 @@ class Migration(migrations.Migration):
             name='Genre',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(help_text=' Введите жанр книги', max_length=200, verbose_name='Жанр книги')),
+                ('name', models.CharField(help_text='Введите жанр книги', max_length=200, verbose_name='Жанр книги')),
             ],
         ),
         migrations.CreateModel(
