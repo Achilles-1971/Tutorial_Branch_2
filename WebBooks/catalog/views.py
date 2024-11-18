@@ -1,5 +1,27 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from catalog.models import Book, Bookinstance, Author
+
 # Create your views here.
 def index(request):
- return HttpResponse("Главная страница сайта Мир книг!")
+ # Генерация "количеств" некоторых главных объектов
+ num_books = Book.objects.all().count()
+ num_instances = Bookinstance.objects.all().count()
+ # Доступные книги (статус = 'На складе')
+ num_instances_available = Bookinstance.objects.filter(status__exact=2).count()
+ num_authors = Author.objects.count() # Метод 'all()' применен по умолчанию.
+ # Количество посещений этого view, подсчитанное
+ # в переменной session
+ num_visits = request.session.get('num_visits', 0)
+ request.session['num_visits'] = num_visits + 1
+ # Отрисовка HTML-шаблона index.html с данными внутри переменной context
+ return render(request, 'index.html',
+ context={'num_books': num_books,
+ 'num_instances': num_instances,
+ 'num_instances_available':
+ num_instances_available,
+ 'num_authors': num_authors,
+ 'num_visits': num_visits},
+ )
+
+
