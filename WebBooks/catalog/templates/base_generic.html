@@ -1,46 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>{% block title %}Мир книг{% endblock %}</title>
+    <title>{% block title %}Мир книг{% endblock %}</title>  <!-- Правильное размещение title -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Описание сайта Мир книг">  <!-- Добавлено мета-описание -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta name="description" content="Сайт о книгах"> <!-- Добавлено описание для SEO -->
+    <!--  Рекомендуется использовать более новую версию Bootstrap  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
     {% block head %}
-    <div class="row" style="margin-bottom: 20px;">
-        <div class="col-sm-12 text-center">  <!-- Изменено на text-center -->
-            <img src="{% static 'images/logotip.jpg' %}" style="width:100px; height:100px; vertical-align: middle;"> <!-- vertical-align вместо align -->
-            <h1 style="color: blue; display: inline;">Сайт "Мир книг"</h1> <!-- Замена <font> на <h1> -->
-        </div>
-    </div>
+        <header class="bg-primary text-white p-3 mb-3">  <!-- Замена изображения и шрифта на header -->
+            <div class="container text-center">
+                <img src="{% static 'images/logotip.jpg' %}" alt="Логотип" style="width:100px; height:100px; vertical-align: middle;">
+                <h1>Мир книг</h1>
+            </div>
+        </header>
     {% endblock %}
 </head>
 <body>
-    <div class="container-fluid">
+    <div class="container">  <!-- Изменено на container для лучшего отступа -->
         <div class="row">
-            <div class="col-sm-2">
+            <div class="col-md-3">  <!-- Изменено на md для лучшей адаптивности -->
                 {% block sidebar %}
-                <ul class="nav nav-pills nav-stacked sidebar-nav"> <!-- Добавлен класс nav-pills nav-stacked для улучшения внешнего вида -->
-                    <li><a href="{% url 'index' %}">Главная страница</a></li>
-                    <li><a href="#">Все книги</a></li>
-                    <li><a href="#">Все авторы</a></li>
-                </ul>
+                    <nav class="nav flex-column">  <!-- Bootstrap 5 навигация -->
+                        <a class="nav-link active" href="{% url 'index' %}">Главная страница</a>
+                        <a class="nav-link" href="#">Все книги</a>
+                        <a class="nav-link" href="#">Все авторы</a>
+                    </nav>
                 {% endblock %}
             </div>
-            <div class="col-sm-1"></div> <!-- Разделитель -->
-            <div class="col-sm-9"> <!-- Изменено на col-sm-9 -->
+            <div class="col-md-9">  <!-- Изменено на md для лучшей адаптивности -->
                 {% block content %}{% endblock %}
-                <div class="row">
-                    <div class="col-sm-12 text-center">  <!-- Copyright теперь центрирован -->
-                        <p>Copyright ООО "Люди и книги", 2020. Все права защищены</p>
-                    </div>
-                </div>
             </div>
         </div>
+        <footer class="bg-light text-center p-3 mt-3">  <!-- Добавлена футер -->
+            <p>Copyright ООО "Люди и книги", 2024. Все права защищены, Боб Дилан знает что он размещён на этом сайте лично</p>
+        </footer>
     </div>
 </body>
 </html>
