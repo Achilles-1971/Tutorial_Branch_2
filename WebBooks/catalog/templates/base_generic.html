@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}Мир книг{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Описание сайта Мир книг">  <!-- Добавлено мета-описание -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    {% block head %}
+    <div class="row" style="margin-bottom: 20px;">
+        <div class="col-sm-12 text-center">  <!-- Изменено на text-center -->
+            <img src="{% static 'images/logotip.jpg' %}" style="width:100px; height:100px; vertical-align: middle;"> <!-- vertical-align вместо align -->
+            <h1 style="color: blue; display: inline;">Сайт "Мир книг"</h1> <!-- Замена <font> на <h1> -->
+        </div>
+    </div>
+    {% endblock %}
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2">
+                {% block sidebar %}
+                <ul class="nav nav-pills nav-stacked sidebar-nav"> <!-- Добавлен класс nav-pills nav-stacked для улучшения внешнего вида -->
+                    <li><a href="{% url 'index' %}">Главная страница</a></li>
+                    <li><a href="#">Все книги</a></li>
+                    <li><a href="#">Все авторы</a></li>
+                </ul>
+                {% endblock %}
+            </div>
+            <div class="col-sm-1"></div> <!-- Разделитель -->
+            <div class="col-sm-9"> <!-- Изменено на col-sm-9 -->
+                {% block content %}{% endblock %}
+                <div class="row">
+                    <div class="col-sm-12 text-center">  <!-- Copyright теперь центрирован -->
+                        <p>Copyright ООО "Люди и книги", 2020. Все права защищены</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
