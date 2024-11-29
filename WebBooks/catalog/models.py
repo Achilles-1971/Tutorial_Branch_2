@@ -39,8 +39,7 @@ class Book(models.Model):
     return self.title
 
   def get_absolute_url(self):
-    # Возвращает url-адрес для доступа к определенному экземпляру книги.
-    return reverse('book-detail', args=[str(self.id)])
+           return reverse('book-detail', args=[str(self.id)])
 
 class Status(models.Model):
   name = models.CharField(max_length=20,
