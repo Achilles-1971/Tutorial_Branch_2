@@ -5,6 +5,25 @@ from .models import Book, Author, Bookinstance, Genre
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import *
 from .forms import AuthorsForm
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+
+
+class BookCreate(CreateView):
+    model = Book
+    fields = "__all__"
+    success_url = reverse_lazy("books")
+
+
+class BookUpdate(UpdateView):
+    model = Book
+    fields = "__all__"
+    success_url = reverse_lazy("books")
+
+
+class BookDelete(DeleteView):
+    model = Book
+    success_url = reverse_lazy("books")
 
 
 # получение данных из БД и загрузка шаблона authors_add.html
