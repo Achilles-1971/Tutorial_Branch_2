@@ -6,10 +6,19 @@ from .models import Book, Author, Bookinstance, Genre
 
 
 class BookListView(generic.ListView):
- model = Book
+    model = Book
+    paginate_by = 3
+
+
 class BookDetailView(generic.DetailView):
- model = Book
-   
+    model = Book
+
+
+class AuthorListView(generic.ListView):
+    model = Author
+    paginate_by = 4
+
+
 def index(request):
     num_books = Book.objects.all().count()
     num_instances = Bookinstance.objects.all().count()
