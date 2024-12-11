@@ -35,6 +35,7 @@
                     <li><a href="{% url 'books' %}">Все книги</а>
                     </li>
                     <li><a href="{% url 'authors' %}">Все авторы</a></li>
+                    <li><a href="{% url 'authors_add' %}">Редактировать авторов</a></li>
                     {% if user.is_authenticated %}
                     <li><a href="{% url 'my-borrowed' %}">В заказе</a></li>
                     <li>Пользователь: {{ user.get_username }}</li>
