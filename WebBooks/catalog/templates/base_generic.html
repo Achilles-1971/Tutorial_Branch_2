@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
-    <title>{% block title %}Мир книг{% endblock %}</title> <!-- Правильное размещение title -->
+    <title>{% block title %}Мир книг{% endblock %}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Сайт о книгах"> <!-- Добавлено описание для SEO -->
-    <!--  Рекомендуется использовать более новую версию Bootstrap  -->
+    <meta name="description" content="Сайт о книгах">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
     {% block head %}
-    <header class="bg-primary text-white p-3 mb-3"> <!-- Замена изображения и шрифта на header -->
+    <header class="bg-primary text-white p-3 mb-3">
         <div class="container text-center">
             <img src="{% static 'images/logotip.jpg' %}" alt="Логотип"
                 style="width:100px; height:100px; vertical-align: middle;">
@@ -25,17 +25,18 @@
 </head>
 
 <body>
-    <div class="container"> <!-- Изменено на container для лучшего отступа -->
+    <div class="container">
         <div class="row">
-            <div class="col-md-3"> <!-- Изменено на md для лучшей адаптивности -->
+            <div class="col-md-3">
                 {% block sidebar %}
-                <nav class="nav flex-column"> <!-- Bootstrap 5 навигация -->
+                <nav class="nav flex-column">
                     <li><a href="{% url 'index' %}">Главная страница</а>
                     </li>
                     <li><a href="{% url 'books' %}">Все книги</а>
                     </li>
                     <li><a href="{% url 'authors' %}">Все авторы</a></li>
                     {% if user.is_authenticated %}
+                    <li><a href="{% url 'my-borrowed' %}">В заказе</a></li>
                     <li>Пользователь: {{ user.get_username }}</li>
                     <li><a href="{% url 'logout'%}?next={{request.path}}">Выход</a></li>
                     {% else %}
